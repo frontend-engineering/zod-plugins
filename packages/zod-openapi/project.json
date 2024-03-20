@@ -12,9 +12,7 @@
       "options": {
         "main": "packages/zod-openapi/src/index.ts",
         "tsConfig": "packages/zod-openapi/tsconfig.lib.json",
-        "outputPath": "dist/packages/zod-openapi",
-        "yalc": true,
-        "bundleDts": false
+        "outputPath": "dist/packages/zod-openapi"
       }
     },
     "build": {
