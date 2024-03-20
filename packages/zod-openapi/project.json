@@ -4,6 +4,19 @@
   "sourceRoot": "packages/zod-openapi/src",
   "projectType": "library",
   "targets": {
+    "dev": {
+      "executor": "@flowda/nx-plugin:dev",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "options": {
+        "main": "packages/zod-openapi/src/index.ts",
+        "tsConfig": "packages/zod-openapi/tsconfig.lib.json",
+        "outputPath": "dist/packages/zod-openapi",
+        "yalc": true,
+        "bundleDts": false
+      }
+    },
     "build": {
       "executor": "@nrwl/js:tsc",
       "outputs": ["{options.outputPath}"],

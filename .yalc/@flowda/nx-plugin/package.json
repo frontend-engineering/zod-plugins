@@ -1,0 +1,19 @@
+{
+  "name": "@flowda/nx-plugin",
+  "version": "0.0.1",
+  "main": "src/index.js",
+  "generators": "./generators.json",
+  "executors": "./executors.json",
+  "dependencies": {
+    "consola": "^3.2.3",
+    "radash": "^12.0.0",
+    "rollup": "^4.12.1",
+    "rollup-plugin-dts": "^6.1.0",
+    "zod": "^3.22.4"
+  },
+  "peerDependencies": {
+    "tslib": "~2.6.2"
+  },
+  "types": "./index.bundle.d.ts",
+  "yalcSig": "23850abb98a0acc6a203405555d18584"
+}
