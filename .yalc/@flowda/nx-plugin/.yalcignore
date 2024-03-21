@@ -1,0 +1,4 @@
+*.js.map
+src/**/*.d.ts
+./**/__fixtures__/**/*
+./**/__tests__/**/*

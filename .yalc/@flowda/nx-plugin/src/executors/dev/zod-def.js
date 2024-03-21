@@ -9,7 +9,7 @@ exports.buildRollupConfigInputSchema = zod_1.z.object({
 exports.devExecutorSchema = zod_1.z.object({
     main: zod_1.z.string().optional(),
     tsConfig: zod_1.z.string().optional(),
-    watch: zod_1.z.boolean().default(true),
+    watch: zod_1.z.boolean().default(false),
     outputPath: zod_1.z.string(),
     yalc: zod_1.z.boolean().default(true),
     bundleDts: zod_1.z.boolean().default(true),

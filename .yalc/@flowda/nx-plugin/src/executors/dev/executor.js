@@ -10,6 +10,7 @@ const path = require("path");
 const tsc_impl_1 = require("@nrwl/js/src/executors/tsc/tsc.impl");
 const child_process_1 = require("child_process");
 const consola_1 = require("consola");
+const fs = require("fs-extra");
 function buildRollupConfig(input) {
     return {
         input: input.bundleInput,
@@ -73,6 +74,11 @@ function devExecutor(_options, context) {
                 }
                 if (options.yalc) {
                     consola_1.default.start(`yalc publish ${context.projectName} ...`);
+                    fs.writeFileSync(path.join(options.outputPath, '.yalcignore'), `*.js.map
+src/**/*.d.ts
+src/**/__fixtures__/**/*
+src/**/__tests__/**/*
+`);
                     (0, child_process_1.execSync)(`yalc publish --push --changed`, {
                         cwd: options.outputPath,
                         stdio: 'inherit',
