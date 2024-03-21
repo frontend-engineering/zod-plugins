@@ -6,7 +6,7 @@ export type ResourceKey = {
   display_name: string
   display_primary_key: boolean
   name: string
-  primary_key: string
+  primary_key: string | null
   searchable_columns: string[] | null
   slug: string
   table_name: string
@@ -41,8 +41,8 @@ export type ReferenceKey = {
 }
 
 export type ExtendSchemaObject =
-  SchemaObject
-  & Partial<ResourceKey>
-  & Partial<ColumnKey>
-  & Partial<AssociationKey>
-  & Partial<ReferenceKey>
+  | SchemaObject
+  | ResourceKey
+  | ColumnKey
+  | AssociationKey
+  | ReferenceKey
