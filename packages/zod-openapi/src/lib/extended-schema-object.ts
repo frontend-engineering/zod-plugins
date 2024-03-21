@@ -1,6 +1,7 @@
 import { SchemaObject } from 'openapi3-ts'
 
 export type ResourceKey = {
+  key_type: 'resource'
   class_name: string
   display_column: string
   display_name: string
@@ -14,6 +15,7 @@ export type ResourceKey = {
 }
 
 export type ColumnKey = {
+  key_type: 'column'
   // access_type: string
   column_source: string
   column_type: string
@@ -22,6 +24,7 @@ export type ColumnKey = {
 }
 
 export type AssociationKey = {
+  key_type: 'association'
   name: string
   display_name: string
   slug: string
@@ -32,6 +35,7 @@ export type AssociationKey = {
 }
 
 export type ReferenceKey = {
+  key_type: 'reference'
   name: string
   display_name: string
   model_name: string
@@ -41,8 +45,8 @@ export type ReferenceKey = {
 }
 
 export type ExtendSchemaObject =
-  | SchemaObject
-  | ResourceKey
-  | ColumnKey
-  | AssociationKey
-  | ReferenceKey
+  SchemaObject &
+  (| ResourceKey
+    | ColumnKey
+    | AssociationKey
+    | ReferenceKey)
