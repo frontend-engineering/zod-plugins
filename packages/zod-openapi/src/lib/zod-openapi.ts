@@ -1,7 +1,6 @@
 import type { SchemaObject } from 'openapi3-ts';
 import merge from 'ts-deepmerge';
 import { AnyZodObject, z, ZodTypeAny } from 'zod';
-import { ExtendSchemaObject } from './extended-schema-object'
 
 export interface OpenApiZodAny extends ZodTypeAny {
   metaOpenApi?: SchemaObject | SchemaObject[];
@@ -528,9 +527,4 @@ export function generateSchema(
     console.error(err);
     return catchAllParser({ zodRef, schemas });
   }
-}
-
-export function zodToOpenAPI(zodRef: OpenApiZodAny,
-                             useOutput?: boolean) {
-  return generateSchema(zodRef, useOutput) as ExtendSchemaObject
 }
