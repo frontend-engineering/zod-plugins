@@ -2,13 +2,9 @@ import type { SchemaObject } from 'openapi3-ts';
 import merge from 'ts-deepmerge';
 import { AnyZodObject, z, ZodTypeAny } from 'zod';
 
-export interface OpenApiZodAny extends ZodTypeAny {
-  metaOpenApi?: SchemaObject | SchemaObject[];
-}
+export type OpenApiZodAny = ZodTypeAny
 
-interface OpenApiZodAnyObject extends AnyZodObject {
-  metaOpenApi?: SchemaObject | SchemaObject[];
-}
+type OpenApiZodAnyObject = AnyZodObject
 
 interface ParsingArgs<T> {
   zodRef: T;
@@ -16,21 +12,20 @@ interface ParsingArgs<T> {
   useOutput?: boolean;
 }
 
+
 export function extendApi<T extends OpenApiZodAny>(
   schema: T,
-  SchemaObject: SchemaObject = {}
+  SchemaObject: SchemaObject = {},
 ): T {
+  const openapi = {
+    ...schema._def.openapi,
+    ...SchemaObject,
+  }
   const newSchema = new (schema as any).constructor({
     ...schema._def,
-    openapi: SchemaObject /* for zod-openapi */,
+    openapi: openapi /* for zod-openapi */,
   })
-  newSchema.metaOpenApi = Object.assign(
-    {},
-    schema.metaOpenApi /* for @anatine/zod-openapi */ || {},
-    SchemaObject,
-  )
-
-  return newSchema;
+  return newSchema
 }
 
 function iterateZodObject({
@@ -506,10 +501,10 @@ export function generateSchema(
   zodRef: OpenApiZodAny,
   useOutput?: boolean
 ): SchemaObject {
-  const { metaOpenApi = {} } = zodRef;
+  const { openapi = {} } = zodRef._def;
   const schemas = [
     zodRef.isNullable && zodRef.isNullable() ? { nullable: true } : {},
-    ...(Array.isArray(metaOpenApi) ? metaOpenApi : [metaOpenApi]),
+    ...(Array.isArray(openapi) ? openapi : [openapi]),
   ];
 
   try {
