@@ -60,7 +60,7 @@ function devExecutor(_options, context) {
                         const packageJson = (0, devkit_1.readJsonFile)(packageJsonPath);
                         packageJson.types = './index.bundle.d.ts';
                         (0, devkit_1.writeJsonFile)(`${options.outputPath}/package.json`, packageJson);
-                        consola_1.default.info('  update package.json#types: ./input.bundle.d.ts');
+                        consola_1.default.info('  update package.json#types: ./index.bundle.d.ts');
                         consola_1.default.success(`Bundle done.`);
                     }
                     catch (e) {

@@ -5,15 +5,15 @@
   "generators": "./generators.json",
   "executors": "./executors.json",
   "dependencies": {
-    "consola": "^3.2.3",
-    "radash": "^12.0.0",
-    "rollup": "^4.12.1",
-    "rollup-plugin-dts": "^6.1.0",
-    "zod": "^3.22.4"
+    "consola": "3.2.3",
+    "radash": "12.0.0",
+    "rollup": "4.12.1",
+    "rollup-plugin-dts": "6.1.0",
+    "zod": "3.22.4"
   },
   "peerDependencies": {
-    "tslib": "~2.6.2"
+    "tslib": "2.6.2"
   },
   "types": "./index.bundle.d.ts",
-  "yalcSig": "a89e07b9a7557836dd5a6c18095e27ae"
+  "yalcSig": "5519f2c2fbfa854035220f054a4a9d15"
 }
