@@ -56,11 +56,6 @@ function devExecutor(_options, context) {
                         consola_1.default.start(`Bundling ${context.projectName} .d.ts...`);
                         const bundle = yield tslib_1.__await(rollup.rollup(rollupOptions));
                         yield tslib_1.__await(bundle.write(rollupOptions.output[0]));
-                        const packageJsonPath = path.join(options.outputPath, 'package.json');
-                        const packageJson = (0, devkit_1.readJsonFile)(packageJsonPath);
-                        packageJson.types = './index.bundle.d.ts';
-                        (0, devkit_1.writeJsonFile)(`${options.outputPath}/package.json`, packageJson);
-                        consola_1.default.info('  update package.json#types: ./index.bundle.d.ts');
                         consola_1.default.success(`Bundle done.`);
                     }
                     catch (e) {
@@ -70,6 +65,20 @@ function devExecutor(_options, context) {
                         else {
                             consola_1.default.error(e);
                         }
+                    }
+                }
+                const packageJsonPath = path.join(options.outputPath, 'package.json');
+                const packageJson = (0, devkit_1.readJsonFile)(packageJsonPath);
+                if (options.bundleDts) {
+                    packageJson.types = './index.bundle.d.ts';
+                    (0, devkit_1.writeJsonFile)(`${options.outputPath}/package.json`, packageJson);
+                    consola_1.default.info('  update package.json#types: ./index.bundle.d.ts');
+                }
+                else {
+                    if (options.yalc) {
+                        delete packageJson.types;
+                        (0, devkit_1.writeJsonFile)(`${options.outputPath}/package.json`, packageJson);
+                        consola_1.default.info('  delete package.json#types');
                     }
                 }
                 if (options.yalc) {

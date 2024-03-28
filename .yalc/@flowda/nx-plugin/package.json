@@ -6,6 +6,7 @@
   "executors": "./executors.json",
   "dependencies": {
     "consola": "3.2.3",
+    "minimatch": "9.0.3",
     "radash": "12.0.0",
     "rollup": "4.12.1",
     "rollup-plugin-dts": "6.1.0",
@@ -15,5 +16,5 @@
     "tslib": "2.6.2"
   },
   "types": "./index.bundle.d.ts",
-  "yalcSig": "5519f2c2fbfa854035220f054a4a9d15"
+  "yalcSig": "d4f08116abd7ac5e99265239d75b3ec6"
 }
