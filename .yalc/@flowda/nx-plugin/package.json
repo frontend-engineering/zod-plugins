@@ -5,16 +5,16 @@
   "generators": "./generators.json",
   "executors": "./executors.json",
   "dependencies": {
-    "consola": "3.2.3",
-    "minimatch": "9.0.3",
-    "radash": "12.0.0",
-    "rollup": "4.12.1",
-    "rollup-plugin-dts": "6.1.0",
-    "zod": "3.22.4"
+    "consola": "^3.2.3",
+    "minimatch": "^9.0.3",
+    "radash": "^12.0.0",
+    "rollup": "^4.12.1",
+    "rollup-plugin-dts": "^6.1.0",
+    "zod": "^3.22.4"
   },
   "peerDependencies": {
-    "tslib": "2.6.2"
+    "tslib": "~2.6.2"
   },
   "types": "./index.bundle.d.ts",
-  "yalcSig": "d4f08116abd7ac5e99265239d75b3ec6"
+  "yalcSig": "bfa07bf4abfd70abc0fb3493955ca48d"
 }

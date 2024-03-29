@@ -2,7 +2,7 @@
   "version": "v1",
   "packages": {
     "@flowda/nx-plugin": {
-      "signature": "d4f08116abd7ac5e99265239d75b3ec6",
+      "signature": "bfa07bf4abfd70abc0fb3493955ca48d",
       "pure": true
     }
   }
