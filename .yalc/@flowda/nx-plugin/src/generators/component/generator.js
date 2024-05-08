@@ -1,7 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.addBind = void 0;
-const tslib_1 = require("tslib");
 const devkit_1 = require("@nrwl/devkit");
 const consola_1 = require("consola");
 const path = require("path");
@@ -11,36 +10,34 @@ const ensure_typescript_1 = require("@nrwl/js/src/utils/typescript/ensure-typesc
 const typescript_1 = require("nx/src/utils/typescript");
 const js_1 = require("@nrwl/js");
 let tsModule;
-function default_1(host, options) {
-    return tslib_1.__awaiter(this, void 0, void 0, function* () {
-        if (!tsModule) {
-            tsModule = (0, ensure_typescript_1.ensureTypescript)();
-        }
-        consola_1.default.info(`Create a ${options.name} component to design project `);
-        const designProject = (0, devkit_1.getProjects)(host).get('design');
-        const componentFileName = _.dash(options.name);
-        const modelSymbolName = _.pascal(options.name) + 'ModelSymbol';
-        const modelName = _.pascal(options.name) + 'Model';
-        const modelFileName = _.dash(options.name) + '.model';
-        (0, devkit_1.generateFiles)(host, path.join(__dirname, 'files'), path.join(designProject.sourceRoot, `${componentFileName}`), {
-            componentName: _.pascal(options.name),
-            componentFileName,
-            modelName,
-            modelFileName,
-            modelSymbolName,
-            tmpl: '',
-        });
-        updateDesignModule(host, {
-            modelName,
-            modelFileName,
-            modelSymbolName,
-            componentFileName,
-        });
-        addImportHelper(host, path.join(designProject.sourceRoot, 'index.ts'), `export * from './${componentFileName}/${componentFileName}'
-export * from './${componentFileName}/${modelFileName}'`);
-        const typesProject = (0, devkit_1.getProjects)(host).get('types');
-        addImportHelper(host, path.join(typesProject.sourceRoot, 'symbols.ts'), `export const ${modelSymbolName} = Symbol.for('${modelName}')`);
+async function default_1(host, options) {
+    if (!tsModule) {
+        tsModule = (0, ensure_typescript_1.ensureTypescript)();
+    }
+    consola_1.default.info(`Create a ${options.name} component to design project `);
+    const designProject = (0, devkit_1.getProjects)(host).get('design');
+    const componentFileName = _.dash(options.name);
+    const modelSymbolName = _.pascal(options.name) + 'ModelSymbol';
+    const modelName = _.pascal(options.name) + 'Model';
+    const modelFileName = _.dash(options.name) + '.model';
+    (0, devkit_1.generateFiles)(host, path.join(__dirname, 'files'), path.join(designProject.sourceRoot, `${componentFileName}`), {
+        componentName: _.pascal(options.name),
+        componentFileName,
+        modelName,
+        modelFileName,
+        modelSymbolName,
+        tmpl: '',
     });
+    updateDesignModule(host, {
+        modelName,
+        modelFileName,
+        modelSymbolName,
+        componentFileName,
+    });
+    addImportHelper(host, path.join(designProject.sourceRoot, 'index.ts'), `export * from './${componentFileName}/${componentFileName}'
+export * from './${componentFileName}/${modelFileName}'`);
+    const typesProject = (0, devkit_1.getProjects)(host).get('types');
+    addImportHelper(host, path.join(typesProject.sourceRoot, 'symbols.ts'), `export const ${modelSymbolName} = Symbol.for('${modelName}')`);
 }
 exports.default = default_1;
 function addImportHelper(host, filePath, statement) {
