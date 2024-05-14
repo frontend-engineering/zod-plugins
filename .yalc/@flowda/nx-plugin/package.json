@@ -18,5 +18,5 @@
     "tslib": "~2.6.2"
   },
   "types": "./index.bundle.d.ts",
-  "yalcSig": "300cfa05f044cc50061c08c4b9c0f24c"
+  "yalcSig": "dfdb1e5386df8eb29a9a466478f87816"
 }

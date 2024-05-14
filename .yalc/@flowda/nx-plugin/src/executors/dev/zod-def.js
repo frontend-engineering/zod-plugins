@@ -7,7 +7,7 @@ exports.rollupTransparentSchema = zod_1.z.object({
     bundleSuppressWarnCodes: zod_1.z.array(zod_1.z.string()).default([]),
     bundleJs: zod_1.z.boolean().default(false),
     externals: zod_1.z.array(zod_1.z.string()).default([]),
-    mts: zod_1.z.boolean().default(false)
+    mts: zod_1.z.boolean().default(false),
 });
 exports.buildRollupConfigInputSchema = exports.rollupTransparentSchema.extend({
     dtsBundleInput: zod_1.z.string(),
